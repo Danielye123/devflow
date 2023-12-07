@@ -71,3 +71,21 @@ export const sidebarLinks: SidebarLink[] = [
       GOLD: 100000,
     },
   };
+
+export const RightSidebar = [
+  {
+    title: "Would it be appropriate to point out an error in another paper during a referee report?",
+  },
+  {
+    title: "How can an airconditioning machine exist?",
+  },
+  {
+    title: "Interrogated every time crossing UK Border as citizen",
+  },
+  {
+    title: "Low digit addition generator",
+  },
+  {
+    title: "What is an example of 3 numbers that do not make up a vector?",
+  }
+]
