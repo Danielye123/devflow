@@ -7,10 +7,10 @@ interface Props {
   title: string;
   description: string;
   link: string;
-  linkTtile: string;
+  LinkTitle: string;
 }
 
-const NoResult = ({ title, description, link, linkTitle }: Props) => {
+const NoResult = ({ title, description, link, LinkTitle }: Props) => {
   return (
     <div className="mt-10 flex w-full flex-col items-center justify-center">
       <Image
@@ -38,7 +38,7 @@ const NoResult = ({ title, description, link, linkTitle }: Props) => {
 
       <Link href={link}>
         <Button className="paragraph-medium mt-5 min-h-[46px] rounded-lg bg-primary-500 px-4 py-3 text-light-900 hover:bg-primary-500 dark:bg-primary-500 dark:text-light-900">
-          {linkTitle}
+          {LinkTitle}
         </Button>
       </Link>
     </div>
