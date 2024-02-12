@@ -4,6 +4,36 @@ import Link from "next/link";
 import Filter from "@/components/shared/Filter";
 import { HomePageFilters } from "@/constants/filters";
 import HomeFilters from "@/components/home/HomeFilters";
+import NoResult from "@/components/shared/NoResult";
+
+const questions = [
+  // {
+  //   _id: 1,
+  //   title: "Title1",
+  //   tags: [
+  //     { _id: 1, name: "python" },
+  //     { _id: 2, name: "sql" },
+  //   ],
+  //   author: "John",
+  //   upvotes: 10,
+  //   views: 100,
+  //   answers: 2,
+  //   createdAt: "2021-09-01T:12:00:00.000z",
+  // },
+  // {
+  //   _id: 2,
+  //   title: "how to center a div?",
+  //   tags: [
+  //     { _id: 1, name: "python" },
+  //     { _id: 2, name: "sql" },
+  //   ],
+  //   author: "John",
+  //   upvotes: 10,
+  //   views: 100,
+  //   answers: 2,
+  //   createdAt: "2021-09-01T:12:00:00.000z",
+  // },
+];
 
 export default function Home() {
   return (
@@ -18,7 +48,7 @@ export default function Home() {
         </Link>
       </div>
       <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
-        <LocalSearchbar 
+        <LocalSearchbar
           route="/"
           iconPosition="left"
           imgSrc="/assets/icons/search.svg"
@@ -26,7 +56,7 @@ export default function Home() {
           otherClasses="flex-1"
         />
 
-        <Filter 
+        <Filter
           filters={HomePageFilters}
           otherClasses="min-h-[56px] sm:min-w-[170px]"
           containerClasses="hidden max-md:flex"
@@ -34,6 +64,10 @@ export default function Home() {
       </div>
 
       <HomeFilters />
+
+      <div className="mt-10 flex w-full flex-col gap-6">
+        {questions.length > 0 ? questions.map((question) => ("QuestionCard")) : <NoResult /> }
+      </div>
     </>
-  )
+  );
 }
