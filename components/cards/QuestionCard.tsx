@@ -28,7 +28,18 @@ const QuestionCard = ({
   answers,
   createdAt,
 }: QuestionProps) => {
-  return <div className="card-wrapper p-9 sm:px-11">QuestionCard</div>;
+  return <div className="card-wrapper p-9 sm:px-11">
+    <div className="flex flex-col-reverse items-start justify-between gap-5 sm:flex-row">
+      
+      <div>
+        <span>
+          {String(createdAt)}
+        </span>
+      </div>
+    </div>
+
+    {title}
+  </div>;
 };
 
 export default QuestionCard;
