@@ -24,7 +24,7 @@ const questions = [
     views: 100,
     answers: [
       {
-        _id: "answer1-1",
+        _id: "1",
         content: "This is a sample answer for question 1.",
         createdAt: new Date("2021-09-02T12:00:00.000Z"),
         author: {
@@ -34,9 +34,9 @@ const questions = [
         },
       },
       {
-        _id: "answer1-2",
+        _id: "2",
         content: "Another insightful answer for question 1.",
-        createdAt: new Date("2021-09-03T12:00:00.000Z"),
+        createdAt: new Date("2023-09-03T12:00:00.000Z"),
         author: {
           _id: "answerAuthor2",
           name: "Doe",
@@ -44,7 +44,7 @@ const questions = [
         },
       },
     ],
-    createdAt: new Date("2021-09-01T12:00:00.000Z"),
+    createdAt: new Date("2024-01-01T12:00:00.000Z"),
   },
   {
     _id: "2",
@@ -58,8 +58,8 @@ const questions = [
       name: "John",
       picture: "authorPictureURL2",
     },
-    upvotes: 10,
-    views: 100,
+    upvotes: 1500000,
+    views: 500552,
     answers: [
       {
         _id: "answer2-1",
