@@ -2,16 +2,16 @@ import { Schema, model, models, Document } from "mongoose";
 
 export interface ITags extends Document {
     name: string;
-    Description: string;
-    Question: Schema.Types.ObjectId[];
+    description: string;
+    questions: Schema.Types.ObjectId[];
     followers: Schema.Types.ObjectId[];
     createdOn: Date;
 }
 
 const TagSchema = new Schema<ITags>({
     name: { type: String, required: true, unique: true },
-    Description: { type: String, required: true },
-    Question: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
+    description: { type: String, required: true },
+    questions: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
     followers: [{ type: Schema.Types.ObjectId, ref: 'User' }], 
     createdOn: { type: Date, default: Date.now },
 });
