@@ -19,10 +19,13 @@ export async function getUserById(params: any) {
     }
 }
 
-export async function createUser(userParam: CreateUserParams) {
+export async function createUser(userData: CreateUserParams) {
     try {
         connectToDatabase();
 
+        const newUser = await User.create(userData);
+        
+        return newUser;
     } catch (error) {
         console.log(error);
         throw error;
