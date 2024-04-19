@@ -1,7 +1,7 @@
 import UserCard from "@/components/cards/UserCard";
 import Filter from "@/components/shared/Filter";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
-import { UserFilters } from "@/constants/filters";
+import { TagFilters } from "@/constants/filters";
 import { getAllUsers } from "@/lib/actions/user.action";
 import Link from "next/link";
 
@@ -21,7 +21,7 @@ const Page = async () => {
         />
 
         <Filter
-          filters={UserFilters}
+          filters={TagFilters}
           otherClasses="min-h-[56px] sm:min-w-[170px]"
         />
       </div>
@@ -33,9 +33,9 @@ const Page = async () => {
             ))
         ): (
             <div className="paragraph-regular text-dark200_light800 mx-auto max-w-4xl text-center">
-                <p>No users yet</p>
+                <p>No tags yet</p>
                 <Link href="/sign-up" className="mt-2 font-bold text-accent-blue">
-                    Join to be the first!
+                    Add a tag now!
                 </Link>
             </div>
         )}
