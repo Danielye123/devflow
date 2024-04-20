@@ -28,14 +28,11 @@ export async function getTopInteractedTags(params: GetTopInteractedTagsParams) {
   }
 }
 
-export async function getAllTAgs(params: GetAllTagsParams) {
+export async function getAllTags(params: GetAllTagsParams) {
     try {
         connectToDatabase();
 
-        // const { page = 1, pageSize = 20, filter, searchQuery } = params;
-
-        const tags = await Tag.find({})
-            .sort({ createdAT: -1 })
+        const tags = await Tag.find({});
 
         return { tags };
     } catch (error) {
