@@ -14,7 +14,6 @@ export default async function Home() {
   console.log(result.questions)
 
   return (
-<<<<<<< Updated upstream
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
         <h1 className="h1-bold text-dark100_light900">All Questions</h1>
@@ -72,10 +71,3 @@ export default async function Home() {
     </>
   );
 }
-=======
-    <div>
-      Hi there!
-    </div>
-  )
-}
->>>>>>> Stashed changes
