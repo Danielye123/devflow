@@ -27,6 +27,7 @@ export async function createAnswer(params: CreateAnswerParams) {
   }
 }
 
+//comment
 export async function getAnswers(params: GetAnswersParams) {
   try {
     connectToDatabase();
