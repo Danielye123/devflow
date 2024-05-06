@@ -12,7 +12,7 @@ export async function createAnswer(params: CreateAnswerParams) {
     connectToDatabase();
 
     const { question, content, author, path } = params;
-    const newAnswer = new Answer({ content, author, question });
+    const newAnswer = await Answer.create({ content, author, question });
 
     // Add the answer to the question's answers array
     await Question.findByIdAndUpdate(question, {
@@ -26,7 +26,6 @@ export async function createAnswer(params: CreateAnswerParams) {
     throw error;
   }
 }
-
 
 export async function getAnswers(params: GetAnswersParams) {
   try {
