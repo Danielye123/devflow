@@ -4,6 +4,8 @@ import { AnswerFilters } from "@/constants/filters";
 import { getAnswers } from "@/lib/actions/answer.action";
 import Image from "next/image";
 import Link from "next/link";
+import { getTimeStamp } from "@/lib/utils";
+import ParseHTML from "./ParseHTML";
 
 interface Props {
     questionId: string;
@@ -38,14 +40,22 @@ const AllAnswers = async ({ questionId, userId, totalAnswers, page, filter}: Pro
                                     className="rounded-full object-cover max-sm:mt-0.5"
                                 />
                                 <div className="flex flex-col sm:flex-row sm:items-center">
-                                    <p>
+                                    <p className="body-semibold text-dark300_light700">
                                         {answer.author.name}
                                     </p>
                                     
+                                    <p className="small-regular text-light400_light500 mt-0.5 line-clamp-1 ml-1">
+                                        answered { " " }
+                                        {getTimeStamp(answer.createdAt)} 
+                                    </p>
                                 </div>
                             </Link>
+                            <div className="flex justify-end">
+                                Voting
+                            </div>
                         </div>
                     </div>
+                        <ParseHTML data={answer.content} />
                 </article>
             ))}
         </div>

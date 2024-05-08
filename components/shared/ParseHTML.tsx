@@ -32,11 +32,10 @@ interface Props {
   data: string;
 }
 
-const ParseHTML = ({ data}: Props) => {
+const ParseHTML = ({ data }: Props) => {
   useEffect(() => {
     Prism.highlightAll();
   }, [])
-  
 
   return (
     <div>
