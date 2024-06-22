@@ -83,7 +83,6 @@ export async function getQuestionById(params: GetQuestionByIdParams) {
     }
 }
 
-
 export async function upvoteQuestion(params: QuestionVoteParams) {
     try {
         connectToDatabase();
@@ -101,6 +100,40 @@ export async function upvoteQuestion(params: QuestionVoteParams) {
             }
         } else {
             updateQuery = { $addToSet: { upvotes: userId }}
+        }
+
+        const question = await Question.findByIdAndUpdate(questionId, updateQuery, { new: true });
+
+        if(!question) {
+            throw new Error("Question not found");
+        }
+
+        // Increment author's reputation
+
+        revalidatePath(path);
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+export async function downvoteQuestion(params: QuestionVoteParams) {
+    try {
+        connectToDatabase();
+
+        const { questionId, userId, hasupVoted, hasdownVoted, path } = params;
+
+        let updateQuery = {};
+
+        if(hasdownVoted){
+            updateQuery = { $pull: { downvotes: userId }}
+        } else if (hasupVoted) {
+            updateQuery = { 
+                $pull: { upvotes: userId },
+                $push: { downvotes: userId }
+            }
+        } else {
+            updateQuery = { $addToSet: { downvotes: userId }}
         }
 
         const question = await Question.findByIdAndUpdate(questionId, updateQuery, { new: true });
