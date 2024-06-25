@@ -50,7 +50,7 @@ const page = async ({ params }) => {
             hasupVoted={result.upvotes.includes(mongoUser._id)}
             downvotes={result.downvotes.length}
             hasdownVoted={result.downvotes.includes(mongoUser._id)}
-            hasSAved={mongoUser?.saved.includes(result._id)}
+            hasSaved={mongoUser?.saved.includes(result._id)}
              />
           </div>
         </div>
