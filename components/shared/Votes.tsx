@@ -30,7 +30,9 @@ const Votes = ({
   }
 
   const handleVote = (action: string) => {
-
+    if(!userId){
+      return;
+    }
   }
 
   return (
