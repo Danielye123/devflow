@@ -1,6 +1,6 @@
 "use client"
 
-import { downvoteQuestion, upvoteQuestion } from "@/lib/actions/question.action";
+import { downvoteAnswer, downvoteQuestion, upvoteAnswer, upvoteQuestion } from "@/lib/actions/question.action";
 import { formatNumber } from "@/lib/utils";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
@@ -49,13 +49,13 @@ const Votes = ({
           path: pathname,
         })
       } else if(type === 'Answer'){
-        // await upvoteAnswer({
-        //   questionId: JSON.parse(itemId),
-        //   userId: JSON.parse(userId),
-        //   hasupVoted,
-        //   hasdownVoted,
-        //   path: pathname,
-        // })
+        await upvoteAnswer({
+          answerId: JSON.parse(itemId),
+          userId: JSON.parse(userId),
+          hasupVoted,
+          hasdownVoted,
+          path: pathname,
+        })
       }
       // TODO: show a toast
       return;
@@ -71,13 +71,13 @@ const Votes = ({
           path: pathname,
         })
       } else if(type === 'Answer'){
-        // await downvoteAnswer({
-        //   questionId: JSON.parse(itemId),
-        //   userId: JSON.parse(userId),
-        //   hasupVoted,
-        //   hasdownVoted,
-        //   path: pathname,
-        // })
+        await downvoteAnswer({
+          answerId: JSON.parse(itemId),
+          userId: JSON.parse(userId),
+          hasupVoted,
+          hasdownVoted,
+          path: pathname,
+        })
       }
       // TODO: show a toast
       return;
