@@ -1,9 +1,10 @@
 "use client"
 
-import { downvoteAnswer, downvoteQuestion, upvoteAnswer, upvoteQuestion } from "@/lib/actions/question.action";
+import { downvoteQuestion, upvoteQuestion } from "@/lib/actions/question.action";
 import { formatNumber } from "@/lib/utils";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+import { downvoteAnswer, upvoteAnswer } from "@/lib/actions/answer.action";
 
 interface Props {
   type: string;
@@ -128,7 +129,8 @@ const Votes = ({
           </div>
         </div>
       </div>
-      <Image 
+      {type === 'Question' && (
+        <Image 
             src={hasSaved 
               ? '/assets/icons/star-filled.svg'
               : '/assets/icons/star-red.svg' 
@@ -139,6 +141,7 @@ const Votes = ({
             className="cursor-pointer"
             onClick={handleSave}
           />
+      )}
     </div>
   )
 }
