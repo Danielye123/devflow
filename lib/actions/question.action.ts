@@ -150,4 +150,3 @@ export async function downvoteQuestion(params: QuestionVoteParams) {
         throw error;
     }
 }
-
