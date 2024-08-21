@@ -1,8 +1,8 @@
 import React from 'react'
 
-const page = () => {
+const page = ({ params, searchParams }) => {
   return (
-    <div>page</div>
+    <div>{params.id}</div>
   )
 }
 
