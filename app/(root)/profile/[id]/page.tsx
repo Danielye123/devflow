@@ -9,6 +9,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getJoinedDate } from "@/lib/utils";
 import ProfileLink from "@/components/shared/ProfileLink";
 import Stats from "@/components/shared/Stats";
+import QuestionTab from "@/components/shared/QuestionTab";
+import AnswersTab from "@/components/shared/AnswersTab";
 
 const page = async ({ params, searchParams }: URLProps) => {
   const { userId: clerkId } = auth();
@@ -26,13 +28,16 @@ const page = async ({ params, searchParams }: URLProps) => {
             className="rounded-full object-cover"
           />
           <div className="mt-3">
-            <h2 className="h2-bold text-dark100_light900">{userInfo.user.name}</h2>
-            <p className="paragraph-regular text-dark-200_light800">@{userInfo.user.username}</p>
+            <h2 className="h2-bold text-dark100_light900">
+              {userInfo.user.name}
+            </h2>
+            <p className="paragraph-regular text-dark-200_light800">
+              @{userInfo.user.username}
+            </p>
 
             <div className="mt-5 flex flex-wrap items-center justify-start gap-5">
               {userInfo.user.portfolioWebsite && (
-
-                <ProfileLink 
+                <ProfileLink
                   imgUrl="/assets/icons/link.svg"
                   href={userInfo.user.portfolioWebsite}
                   title="Portfolio"
@@ -40,22 +45,22 @@ const page = async ({ params, searchParams }: URLProps) => {
               )}
 
               {userInfo.user.location && (
-                <ProfileLink 
-                imgUrl="/assets/icons/location.svg"
-                title={userInfo.user.location}
+                <ProfileLink
+                  imgUrl="/assets/icons/location.svg"
+                  title={userInfo.user.location}
                 />
               )}
 
-                <ProfileLink 
-                  imgUrl="/assets/icons/calendar.svg"
-                  title={getJoinedDate(userInfo.user.joinedAt)}
-                />
+              <ProfileLink
+                imgUrl="/assets/icons/calendar.svg"
+                title={getJoinedDate(userInfo.user.joinedAt)}
+              />
             </div>
 
             {userInfo.user.bio && (
-            <p className="paragraph-regular text-dark400_light800 mt-8">
-              {userInfo.user.bio}
-            </p>
+              <p className="paragraph-regular text-dark400_light800 mt-8">
+                {userInfo.user.bio}
+              </p>
             )}
           </div>
         </div>
@@ -72,20 +77,34 @@ const page = async ({ params, searchParams }: URLProps) => {
           </SignedIn>
         </div>
       </div>
-      <Stats 
+      <Stats
         totalQuestions={userInfo.totalQuestions}
         totalAnswers={userInfo.totalAnswers}
       />
       <div className="mt-10 flex gap-10">
         <Tabs defaultValue="account" className="flex-1">
           <TabsList className="background-light800_dark400 min-h-[42px] p-1">
-            <TabsTrigger value="top-posts" className="tab">Top Posts</TabsTrigger>
-            <TabsTrigger value="answers" className="tab">Answers</TabsTrigger>
+            <TabsTrigger value="top-posts" className="tab">
+              Top Posts
+            </TabsTrigger>
+            <TabsTrigger value="answers" className="tab">
+              Answers
+            </TabsTrigger>
           </TabsList>
           <TabsContent value="top-posts">
-            <QuestionTab />
+            <QuestionTab
+              searchParams={searchParams}
+              userId={userInfo.user._id}
+              clerkId={clerkId}
+            />
           </TabsContent>
-          <TabsContent value="answers">AnswersTab</TabsContent>
+          <TabsContent value="answers">
+            <AnswersTab
+              searchParams={searchParams}
+              userId={userInfo.user._id}
+              clerkId={clerkId}
+            />
+          </TabsContent>
         </Tabs>
       </div>
     </>
