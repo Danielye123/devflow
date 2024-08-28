@@ -21,7 +21,7 @@ import Interaction from "@/database/interaction.model";
                 question: questionId,
             })
 
-            if(existingInteraction) return console.log('User has already viewed.')
+            // if(existingInteraction) return (console.log('User has already viewed.'))
 
             // Create interaction
             await Interaction.create({
