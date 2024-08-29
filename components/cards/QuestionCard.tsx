@@ -3,6 +3,7 @@ import React from "react";
 import RenderTag from "../shared/RenderTag";
 import Metric from "../shared/Metric";
 import { getTimeStamp, formatNumber } from "@/lib/utils";
+import { SignedIn } from "@clerk/nextjs";
 
 interface QuestionProps {
   _id: string;
@@ -15,6 +16,7 @@ interface QuestionProps {
     _id: string;
     name: string;
     picture: string;
+    clerkId?: string;
   };
   upvotes: string[];
   views: number;
@@ -32,7 +34,10 @@ const QuestionCard = ({
   views,
   answers,
   createdAt,
+  clerkId
 }: QuestionProps) => {
+  const showActionButtons = clerkId && clerkId === author.clerkId;
+  
   return (
     <div className="card-wrapper p-9 sm:px-11">
       <div className="flex flex-col-reverse items-start justify-between gap-5 sm:flex-row">
@@ -47,7 +52,9 @@ const QuestionCard = ({
           </Link>
         </div>
 
-        {/* If signed in add edit delete actions */}
+        <SignedIn>
+
+        </SignedIn>
       </div>
 
       <div className="mt-3.5 flex flex-wrap gap-2">
