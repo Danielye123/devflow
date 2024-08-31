@@ -4,6 +4,7 @@ import RenderTag from "../shared/RenderTag";
 import Metric from "../shared/Metric";
 import { getTimeStamp, formatNumber } from "@/lib/utils";
 import { SignedIn } from "@clerk/nextjs";
+import EditDeleteAction from "../shared/EditDeleteAction";
 
 interface QuestionProps {
   _id: string;
@@ -53,7 +54,12 @@ const QuestionCard = ({
         </div>
 
         <SignedIn>
-
+          {showActionButtons && (
+            <EditDeleteAction
+              type="Question"
+              itemId={JSON.stringify{_id}}
+            />
+          )}
         </SignedIn>
       </div>
 
