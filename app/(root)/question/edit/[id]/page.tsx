@@ -1,8 +1,10 @@
 import React from 'react'
 
-const page = () => {
+const Page = () => {
   return (
-    <div>page</div>
+    <>
+      <h1>Edit Question</h1>
+    </>
   )
 }
 
